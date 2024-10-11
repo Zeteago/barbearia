@@ -16,6 +16,12 @@ def main(page: ft.Page):
         elif e.control.text == 'Já tenho uma conta':
             page.clean()
             tela_login()
+        elif e.control.text == 'Agendar':
+            page.clean()
+            tela_agendar()
+        elif e.control.icon == ft.icons.PEOPLE:
+            page.clean()
+            tela_login()
 
         page.update()
 
@@ -45,6 +51,13 @@ def main(page: ft.Page):
                 page.dialog = alerta('Preencha todos os campos!', 'red')
                 page.update()
 
+        def voltar(e):
+            if e.control.icon == ft.icons.ARROW_BACK_IOS:
+                page.clean()
+                tela_inicial()
+            
+            page.update()
+
         #tesoura_imagem = 'imagesBarbearia/tesoura2.png'
 
         #TITULO
@@ -52,7 +65,7 @@ def main(page: ft.Page):
             controls=[
                 #ver_tesoura,
                 ft.Text(
-                    value='Barbearia',
+                    value='Barbearia e Salão',
                     style=ft.TextThemeStyle.HEADLINE_SMALL
                 )
             ],
@@ -109,6 +122,16 @@ def main(page: ft.Page):
             ]
         )
 
+        bt_voltar = ft.IconButton(
+            icon=ft.icons.ARROW_BACK_IOS,
+            icon_color='white',
+            on_click=voltar
+        )
+
+        bt_voltar = ft.Container(
+            content=bt_voltar
+        )
+
         #JUNÇÃO
         inicial = ft.Column(
             controls=[
@@ -121,7 +144,7 @@ def main(page: ft.Page):
             expand=True
         )
 
-        page.add(inicial)
+        page.add(bt_voltar, inicial)
 
     #TELA DE REGISTRO
     def tela_registro():
@@ -234,9 +257,9 @@ def main(page: ft.Page):
 
     #TELA INICIAL
     def tela_inicial():
-        
+
         titulo = ft.Text(
-            value='Barbearia',
+            value='Agenda moderna',
             style=ft.TextThemeStyle.HEADLINE_SMALL
         )
 
@@ -250,12 +273,16 @@ def main(page: ft.Page):
             height=tam_btLogH,
             bgcolor='white',
             color='black',
-            style=style
+            style=style,
+            on_click=muda_tela
         )
 
-        bt_perfil = ft.IconButton(
+        bt_perfil = ft.TextButton(
+            text='Entrar',
             icon=ft.icons.PEOPLE,
-            icon_color='white'
+            icon_color='white',
+            style=ft.ButtonStyle(color={ft.MaterialState.DEFAULT: ft.colors.WHITE}),
+            on_click=muda_tela
         )
 
         textos = ft.Container(
@@ -296,6 +323,96 @@ def main(page: ft.Page):
 
         page.add(conteudo)
 
+    #TELA AGENDAR
+    def tela_agendar():
+
+        page.padding = ft.padding.only(top=15)
+
+        def voltar(e):
+            if e.control.icon == ft.icons.ARROW_BACK_IOS:
+                page.clean()
+                tela_inicial()
+            
+            page.update()
+
+        bt_voltar = ft.IconButton(
+            icon=ft.icons.ARROW_BACK_IOS,
+            icon_color='white',
+            on_click=voltar
+        )
+
+        bt_logar = ft.TextButton(
+            icon=ft.icons.PEOPLE,
+            icon_color='white',
+            on_click=muda_tela
+        )
+
+        bt_config = ft.IconButton(
+            icon=ft.icons.SETTINGS,
+            icon_color='white'
+        )
+        
+        cabeca = ft.Row(
+            controls=[
+                bt_voltar,
+                ft.Row(controls=[ft.Text('Agenda', text_align=ft.TextAlign.CENTER)], alignment=ft.MainAxisAlignment.CENTER, expand=True),
+                bt_logar,
+                bt_config
+            ],
+            expand=True
+        )
+
+        semanas = ft.ResponsiveRow(
+            columns=2,
+            controls=[
+                ft.Row(
+                    col=1,
+                    controls=[ft.TextButton('Semana atual', style=ft.ButtonStyle(color={ft.MaterialState.DEFAULT: 'white'}))],
+                    alignment=ft.MainAxisAlignment.CENTER
+                ),
+                ft.Row(
+                    col=1,
+                    controls=[ft.TextButton('Póxima semana', style=ft.ButtonStyle(color={ft.MaterialState.DEFAULT: 'white'}))],
+                    alignment=ft.MainAxisAlignment.CENTER
+                )
+            ]
+        )
+
+
+        #ULTIMA ATUALIZAÇÃOOOOOOOOOOO
+        organizacao = ft.ResponsiveRow(
+            columns=5,
+            controls=[
+                ft.Container(
+                    col=1,
+                    content=ft.Column(
+                            controls=[
+                                ft.TextButton(
+                                    'S',
+                                    style=ft.ButtonStyle(color={ft.MaterialState.DEFAULT: 'white'})                   
+                                )
+                            ]
+                    ),
+                    bgcolor=ft.colors.BLACK12
+                )
+            ]
+        )
+
+        conteudo = ft.Container(
+            content=ft.Column(
+                controls=[
+                    cabeca,
+                    ft.Divider(),
+                    semanas,
+                    ft.Divider(),
+                    organizacao
+                ],
+                spacing=0
+            )
+        )
+
+        page.add(conteudo)
+    
     tela_inicial()
 
 if __name__=="__main__":
