@@ -18,42 +18,42 @@ Organização do Trabalho:
 Descrição Geral do Sistema:
 	O aplicativo num todo tem 6 telas -> Tela Principal, Tela Edição, Tela Adicionar, Tela Pesquisa, Tela Relatório, Tela Relatórios.
 	Hierarquia de funções:
-		Código limpo ->      Função Semana;
-						Main ->
-							Necessário; *(CONEXÃO)*
-							Screen Main; *(CONEXÃO)*
-							Fechar diálogo;
-							Excluir; *(CONEXÃO)*
-							Confirmação;
-							Função Voltar;
-							Tirar;
-							Pesquisar -> *(CONEXÃO)*
-								Remover Acentos;
-							Avançar;
-							Retroceder;
-							Muda Dia;
-							Editar; *(CONEXÃO)*
-							Mascara;
-							Tela Adiciona ->
-								Mudou Data;
-								Voltar;
-								Escolher Hora ->
-									On_Time_Confirm;**
-								Fechar_Dialogo;
-								Fechar Dialogo e Adicionar;
-								Verifica; *(CONEXÃO)*
-								Adicionar; *(CONEXÃO)*
-								Screen;
-							Adicionar;
-							Tela Editar -> *(CONEXÃO)*
-								Fechar Dialogo e Excluir;
-								Fechar Dialogo da Hora;
-								Fechar Dialogo e Adicionar;
-								Alterar; *(CONEXÃO)*
-								Verifica; *(CONEXÃO)*
-								Mudou Data;
-								Voltar;
-								Screen Edit;
+		Código limpo -> 	Função Semana;
+					Main ->
+						Necessário; *(CONEXÃO)*
+						Screen Main; *(CONEXÃO)*
+						Fechar diálogo;
+						Excluir; *(CONEXÃO)*
+						Confirmação;
+						Função Voltar;
+						Tirar;
+						Pesquisar -> *(CONEXÃO)*
+							Remover Acentos;
+						Avançar;
+						Retroceder;
+						Muda Dia;
+						Editar; *(CONEXÃO)*
+						Mascara;
+						Tela Adiciona ->
+							Mudou Data;
+							Voltar;
+							Escolher Hora ->
+								On_Time_Confirm;**
+							Fechar_Dialogo;
+							Fechar Dialogo e Adicionar;
+							Verifica; *(CONEXÃO)*
+							Adicionar; *(CONEXÃO)*
+							Screen;
+						Adicionar;
+						Tela Editar -> *(CONEXÃO)*
+							Fechar Dialogo e Excluir;
+							Fechar Dialogo da Hora;
+							Fechar Dialogo e Adicionar;
+							Alterar; *(CONEXÃO)*
+							Verifica; *(CONEXÃO)*
+							Mudou Data;
+							Voltar;
+							Screen Edit;
 				 
 			
 
